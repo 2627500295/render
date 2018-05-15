@@ -1,0 +1,20 @@
+{
+  "name": "render",
+  "version": "0.2.0",
+  "description": "ReactDOM.render Helper for Decorator",
+  "main": "./lib/index.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://2627500295@github.com/2627500295/render.git"
+  },
+  "keywords": [
+    "React", "ReactDOM", "render"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2627500295/render/issues"
+  },
+  "homepage": "https://github.com/2627500295/render#readme"
+}

@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory" : [
+    "tslint-plugin-prettier"
+  ],
+  "rules" : {
+    "prettier": [
+      true,
+      { 
+        "singleQuote": true 
+      }
+    ]
+  },
+  "jsRules": {
+    "max-line-length": {
+      "options": [120]
+    }
+  }
+}
