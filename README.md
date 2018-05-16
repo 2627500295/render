@@ -4,7 +4,7 @@ ReactDOM.render Helper for Decorator
 ## 用法
 
 ```bash
-npm install --save github:2627500295/render
+yarn add github:2627500295/render
 ```
 
 ```javascript
