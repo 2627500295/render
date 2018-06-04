@@ -1,6 +1,6 @@
 {
-  "name": "render",
-  "version": "0.3.0",
+  "name": "@microld/render",
+  "version": "0.3.1",
   "keywords": [
     "React",
     "ReactDOM",
@@ -11,20 +11,21 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "rimraf ./dist && tsc"
+  },
   "dependencies": {
     "@types/react": "^16.3.14",
-    "@types/react-dom": "^16.0.5",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "typescript": "^2.8.3"
+    "@types/react-dom": "^16.0.6",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "typescript": "^2.8.4"
   },
   "devDependencies": {
+    "rimraf": "^2.6.2",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.8.0",
-    "tslint-config-prettier": "^1.12.0",
     "tslint-eslint-rules": "^5.2.0",
-    "tslint-plugin-prettier": "^1.3.0",
     "tslint-react": "^3.6.0"
   },
   "repository": {

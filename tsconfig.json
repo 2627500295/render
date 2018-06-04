@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    // "sourceMap": true,
-    "jsx": "react",
-    "moduleResolution": "node",
     "rootDir": "src",
+    "outDir": "dist",
+
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -16,7 +18,11 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "declaration": true
+    "declaration": true,
+
+    // 支持 ES6 导入
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
