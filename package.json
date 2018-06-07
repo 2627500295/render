@@ -1,6 +1,6 @@
 {
   "name": "@microld/render",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "keywords": [
     "React",
     "ReactDOM",
@@ -15,18 +15,18 @@
     "build": "rimraf ./dist && tsc"
   },
   "dependencies": {
-    "@types/react": "^16.3.14",
-    "@types/react-dom": "^16.0.6",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "typescript": "^2.8.4"
+    "react-dom": "^16.4.0"
   },
   "devDependencies": {
+    "@types/node": "^10.3.1",
+    "@types/react": "^16.3.16",
+    "@types/react-dom": "^16.0.6",
     "rimraf": "^2.6.2",
     "tslint": "^5.10.0",
-    "tslint-config-airbnb": "^5.8.0",
     "tslint-eslint-rules": "^5.2.0",
-    "tslint-react": "^3.6.0"
+    "tslint-react": "^3.6.0",
+    "typescript": "^2.8.4"
   },
   "repository": {
     "type": "git",

@@ -1,27 +1,23 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __importStar(require("react"));
-var ReactDOM = __importStar(require("react-dom"));
-var appElem = document.getElementById('app');
-var rootElem = document.getElementById('root');
+var react_1 = __importDefault(require("react"));
+var react_dom_1 = __importDefault(require("react-dom"));
+var appElement = document.getElementById('app');
+var rootElement = document.getElementById('root');
 function render(MountElement, Renderer) {
-    if (MountElement === void 0) { MountElement = appElem; }
-    if (Renderer === void 0) { Renderer = ReactDOM.render; }
-    var MountNode = MountElement || rootElem;
-    return function (RCC) {
-        Renderer(React.createElement(RCC, null), MountNode);
+    if (MountElement === void 0) { MountElement = appElement; }
+    if (Renderer === void 0) { Renderer = react_dom_1.default.render; }
+    var MountNode = MountElement || rootElement;
+    return function (ReactComponentClass) {
+        Renderer(react_1.default.createElement(ReactComponentClass, null), MountNode);
     };
 }
 exports.render = render;
+exports.default = render;
 function hydrate(MountElement) {
-    return render(MountElement, ReactDOM.hydrate);
+    return render(MountElement, react_dom_1.default.hydrate);
 }
 exports.hydrate = hydrate;
-exports.default = render;

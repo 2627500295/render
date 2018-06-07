@@ -1,21 +1,27 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const appElem: HTMLElement | null = document.getElementById('app');
-const rootElem: HTMLElement | null = document.getElementById('root');
+const appElement: HTMLElement | null = document.getElementById('app');
+const rootElement: HTMLElement | null = document.getElementById('root');
 
-export type IRenderReturn = (RCC: React.ComponentClass) => void;
+export type IRenderReturn = (ReactComponentClass: React.ComponentClass) => void;
 
-export function render(MountElement: HTMLElement = (<HTMLElement>appElem), Renderer: ReactDOM.Renderer = ReactDOM.render): IRenderReturn {
-  let MountNode: HTMLElement = MountElement || rootElem as HTMLElement;
+export function render(
+  MountElement: HTMLElement | null = appElement,
+  Renderer: ReactDOM.Renderer = ReactDOM.render
+): IRenderReturn {
+  const MountNode: HTMLElement | null = MountElement || rootElement;
 
-  return (RCC: React.ComponentClass): void => {
-    Renderer(React.createElement(RCC, null), MountNode)
+  return (ReactComponentClass: React.ComponentClass): void => {
+    Renderer(
+      React.createElement(ReactComponentClass, null),
+      MountNode
+    );
   };
 }
 
-export function hydrate(MountElement?: HTMLElement): IRenderReturn {
+export function hydrate(MountElement?: HTMLElement | null): IRenderReturn {
   return render(MountElement, ReactDOM.hydrate);
 }
 
-export default render;
+export { render as default };
