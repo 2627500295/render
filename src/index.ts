@@ -1,1 +1,3 @@
-export { default, render, hydrate } from './render';
+import { render, hydrate } from './render';
+
+export { render as default, render, hydrate };

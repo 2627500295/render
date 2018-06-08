@@ -10,7 +10,7 @@ export function render(
   MountElement: HTMLElement | null = appElement,
   Renderer: ReactDOM.Renderer = ReactDOM.render
 ): IRenderReturn {
-  const MountNode: HTMLElement | null = MountElement || rootElement;
+  const MountNode: HTMLElement | null = MountElement || appElement || rootElement;
 
   return (ReactComponentClass: React.ComponentClass): void => {
     Renderer(
@@ -20,8 +20,11 @@ export function render(
   };
 }
 
-export function hydrate(MountElement?: HTMLElement | null): IRenderReturn {
-  return render(MountElement, ReactDOM.hydrate);
+export function hydrate(
+  MountElement?: HTMLElement | null,
+  Renderer: ReactDOM.Renderer = ReactDOM.hydrate
+): IRenderReturn {
+  return render(MountElement, Renderer);
 }
 
-export { render as default };
+export default render;

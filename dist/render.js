@@ -10,14 +10,15 @@ var rootElement = document.getElementById('root');
 function render(MountElement, Renderer) {
     if (MountElement === void 0) { MountElement = appElement; }
     if (Renderer === void 0) { Renderer = react_dom_1.default.render; }
-    var MountNode = MountElement || rootElement;
+    var MountNode = MountElement || appElement || rootElement;
     return function (ReactComponentClass) {
         Renderer(react_1.default.createElement(ReactComponentClass, null), MountNode);
     };
 }
 exports.render = render;
-exports.default = render;
-function hydrate(MountElement) {
-    return render(MountElement, react_dom_1.default.hydrate);
+function hydrate(MountElement, Renderer) {
+    if (Renderer === void 0) { Renderer = react_dom_1.default.hydrate; }
+    return render(MountElement, Renderer);
 }
 exports.hydrate = hydrate;
+exports.default = render;
