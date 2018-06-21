@@ -1,117 +1,124 @@
 # render
 ReactDOM.render Helper for Decorator
 
+&nbsp;
+
 ## 用法
+
+### 安装
 
 ```bash
 yarn add github:2627500295/render
 ```
 
-```javascript
-import { render, hydrate } from 'render';
+OR
+
+```
+npm install github:2627500295/render
 ```
 
+&nbsp;
+
+### 使用
+
 ```javascript
-import * as React from 'react';
-import { render } from 'render';
+import render, { hydrate } from 'render';
+```
 
-const rootElement: HTMLElement | null = document.getElementById('root');
+#### ES6
 
-@render(rootElement)
-export default class appBootstrap extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello React!</h1>
-        <p>这是一个 React 的演示页面!</p>
-      <div>
-    )
-  }
+./src/app.jsx
+
+```javascript
+import React, { Component } from 'react';
+
+class App extends Component {
+  render = () => (
+    <div>
+      <h1>Hello React!</h1>
+      <p>这是一个 React 的演示页面!</p>
+    <div>
+  )
 }
+
+export default App;
 ```
 
+./src/index.js
 
-## 例子
+```javascript
+import render from 'render';
+import App from './App';
+
+render()(App);
+```
+
+&nbsp;
+
+#### ES7 Decorator
+
+./src/app.jsx
+
+```javascript
+import React, { Component } from 'react';
+
+class App extends Component {
+  render = () => (
+    <div>
+      <h1>Hello React!</h1>
+      <p>这是一个 React 的演示页面!</p>
+    <div>
+  )
+}
+
+export default App;
+```
+
+./src/index.js
+
+```javascript
+import render from 'render';
+import App from './App';
+
+@render()
+class Bootstrap extends React.Component {
+  render = () => <Root />;
+}
+
+export default Bootstrap;
+```
+
+&nbsp;
+
+#### 自定义挂载元素
 
 ./src/index.tsx
 
-### Simple
-
 ```javascript
-import * as React from 'react';
-import { hot } from 'react-hot-loader';
+import render from 'render';
+import App from './App';
+const appContainer = document.querySelector('.AppContainer');
 
-import { render } from './utils/render';
-
-import Root from './contariners/Root';
-
-@render()
-@hot(module)
-export default class Bootstrap extends React.Component {
-  public render() {
-    return <Root />;
-  }
-}
+render(appContainer)(App);
 ```
 
-### Complicated
+&nbsp;
+
+#### 自定义渲染方式
 
 ```javascript
-import * as React from 'react';
-import { hot } from 'react-hot-loader';
+import ReactDOM from 'react-dom';
+import render from 'render';
+import App from './App';
 
-import { render } from './utils/render';
+render(null, ReactDOM.hydrate)(App);
+```
 
-interface IBootstrapProps {
-  readonly world: string;
-}
+建议使用方法
 
-interface IBootstrapState {
-  brand: string;
-}
+```javascript
+import { hydrate } from 'render';
+import App from './App';
 
-@render()
-@hot(module)
-export default class Bootstrap extends React.Component<
-  IBootstrapProps,
-  IBootstrapState
-> {
-  public static defaultProps: IBootstrapProps = {
-    world: 'React'
-  };
-
-  public state = {
-    brand: 'React'
-  };
-
-  public constructor(props: IBootstrapProps, state: IBootstrapState) {
-    super(props, state);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  public handleClick(event: React.MouseEvent<HTMLButtonElement>): void {
-    const { brand } = this.state;
-
-    this.setState({
-      brand: brand
-        .split('')
-        .reverse()
-        .join('')
-    });
-  }
-
-  public render(): React.ReactElement<IBootstrapProps> {
-    const { world } = this.props;
-    const { brand } = this.state;
-
-    return (
-      <div>
-        <h1>Hello {world}!</h1>
-        <p>欢迎使用 {brand}!</p>
-        <button onClick={this.handleClick}>点我一下</button>
-      </div>
-    );
-  }
-}
+hydrate()(App);
 ```
